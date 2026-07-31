@@ -24,6 +24,34 @@ want full auditability and no third-party tooling. It was proven on a real migra
 ~10,000 files / ~32 GB across five users with zero failures and zero reconciliation
 discrepancies.
 
+## This toolkit vs. Microsoft's native cross-tenant migration
+
+Microsoft offers a first-party solution for this problem: [Cross-tenant OneDrive
+migration](https://learn.microsoft.com/en-us/microsoft-365/migration/cross-tenant-onedrive-migration)
+(`Set-SPOCrossTenantRelationship` + `Start-SPOCrossTenantUserContentMove`). If it fits your
+scenario, use it — data never leaves the Microsoft cloud, sharing permissions survive, a
+redirect is left at the old URL so existing links keep working, and it scales to thousands
+of users.
+
+This toolkit exists for the cases the native tool rejects:
+
+| Scenario | Native tool | This toolkit |
+|---|---|---|
+| User already has a OneDrive in the target tenant | **Fails** — no merge or overwrite; the target OneDrive must not exist | Designed for it — content lands in a `Migrated/` subfolder alongside live files |
+| Licensing | Requires a paid Cross-Tenant User Data Migration add-on license per user | None beyond what you already have |
+| Tenant trust relationship | Requires establishing an org relationship between tenants | None — two independent admin logins |
+| Migrating a subset of a user's situation | All-or-nothing per user; one-and-done, no incremental passes | Manifest-driven; rerun, re-scope, or pilot one user at a time |
+| Government clouds (GCC, GCC High, DoD) | Not supported | Works anywhere PnP PowerShell connects |
+| Audit trail | Migration status cmdlets | Per-file CSV manifests for download, upload, and reconciliation |
+| Version history | Moves with the content | **Not migrated** — current versions only |
+| Sharing permissions and links | Preserved, with redirects | **Not migrated** — links break; users re-share from the target |
+
+Rule of thumb: clean merger or divestiture, target OneDrives don't exist yet, and you can
+buy the licenses → use Microsoft's native tool. Users already active in the target tenant,
+no budget for add-on licenses, government cloud, or you need file-level auditability →
+this toolkit.
+
+
 ## Requirements
 
 - PowerShell 7.4+ (macOS, Windows, or Linux)

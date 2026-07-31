@@ -1,0 +1,4 @@
+DisplayName,SourceUPN,SourceOneDriveUrl,TargetUPN,TargetOneDriveUrl,LocalFolder,Include
+Alex Example,alex@source-tenant.example,https://SOURCETENANT-my.sharepoint.com/personal/alex_source-tenant_example,Alex.Example@target-tenant.example,https://TARGETTENANT-my.sharepoint.com/personal/alex_example_target-tenant_example,alex_example,Yes
+Sam Sample,sam@source-tenant.example,https://SOURCETENANT-my.sharepoint.com/personal/sam_source-tenant_example,Sam.Sample@target-tenant.example,https://TARGETTENANT-my.sharepoint.com/personal/sam_sample_target-tenant_example,sam_sample,Yes
+Pat Placeholder,pat@source-tenant.example,https://SOURCETENANT-my.sharepoint.com/personal/pat_source-tenant_example,Pat.Placeholder@target-tenant.example,https://TARGETTENANT-my.sharepoint.com/personal/pat_placeholder_target-tenant_example,pat_placeholder,No

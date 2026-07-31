@@ -3,6 +3,8 @@
 A PnP PowerShell toolkit for migrating OneDrive for Business content between Microsoft 365
 tenants — download-then-upload, manifest-driven, with verified metadata restoration.
 
+Built collaboratively with Claude (Anthropic). All code human-reviewed and tested against production tenants before publication.
+
 ## What it does
 
 Four scripts migrate the personal OneDrive (Documents library) of a defined set of users from
